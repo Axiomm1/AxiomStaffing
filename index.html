@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name — Portfolio</title>
+  <meta name="description" content="Your personal developer portfolio: projects, skills, and contact." />
+  <meta property="og:title" content="Your Name — Portfolio" />
+  <meta property="og:description" content="Projects, skills, and contact." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://example.com" />
+  <meta name="theme-color" content="#0b0b0d" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🛠️</text></svg>">
+
+  <style>
+    :root{
+      --bg:#0b0b0d;           /* page background */
+      --panel:#121217;        /* cards / sections */
+      --muted:#9aa0a6;        /* secondary text */
+      --text:#e6e6e6;         /* primary text */
+      --brand:#7c5cff;        /* accent color */
+      --brand-2:#51e1a7;      /* second accent */
+      --ring:rgba(124,92,255,.4);
+      --radius:16px;
+      --maxw:1100px;
+    }
+
+    /* Global reset */
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background:radial-gradient(1200px 600px at 80% -10%, rgba(124,92,255,.15), transparent 60%),
+                 radial-gradient(1300px 700px at 10% -20%, rgba(81,225,167,.12), transparent 60%),
+                 var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    a{color:var(--brand); text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .wrap{max-width:var(--maxw); margin-inline:auto; padding:0 20px}
+
+    /* Header */
+    header{
+      position:sticky; top:0; backdrop-filter:saturate(140%) blur(10px);
+      background:linear-gradient(180deg, rgba(11,11,13,.85), rgba(11,11,13,.6));
+      border-bottom:1px solid rgba(255,255,255,.06);
+      z-index:50;
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; height:64px}
+    .brand{display:flex; gap:10px; align-items:center; font-weight:700; letter-spacing:.4px}
+    .dot{width:10px; height:10px; border-radius:50%; background:linear-gradient(135deg,var(--brand),var(--brand-2)); box-shadow:0 0 0 6px rgba(124,92,255,.15)}
+    nav ul{display:flex; list-style:none; gap:18px; padding:0; margin:0}
+
+    /* Mobile menu */
+    .hamburger{display:none; background:none; border:0; color:var(--text); font-size:24px}
+    @media (max-width: 860px){
+      nav ul{display:none}
+      nav.open ul{display:flex; flex-direction:column; gap:12px; position:absolute; left:20px; right:20px; top:64px; padding:16px; border:1px solid rgba(255,255,255,.08); border-radius:12px; background:rgba(18,18,23,.98)}
+      .hamburger{display:block}
+    }
+
+    /* Hero */
+    .hero{padding:96px 0 48px}
+    .hero h1{font-size:clamp(28px, 6vw, 48px); line-height:1.2; margin:0 0 8px}
+    .hero p.lead{color:var(--muted); font-size:clamp(16px, 2.2vw, 18px); margin:0 0 24px}
+    .chiprow{display:flex; flex-wrap:wrap; gap:10px}
+    .chip{display:inline-flex; align-items:center; gap:8px; padding:10px 14px; background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); border-radius:999px}
+    .chip svg{opacity:.9}
+
+    .cta{display:flex; gap:12px; margin-top:22px}
+    .btn{padding:12px 16px; border-radius:12px; border:1px solid rgba(255,255,255,.08); background:var(--panel); color:var(--text); text-decoration:none; display:inline-flex; align-items:center; gap:8px}
+    .btn.primary{background:linear-gradient(135deg, var(--brand), var(--brand-2)); color:#09151a; font-weight:700}
+    .btn:focus{outline:3px solid var(--ring); outline-offset:2px}
+
+    /* Sections */
+    section{padding:56px 0}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:28px}
+    .section-title{font-size:22px; letter-spacing:.3px; margin:0 0 18px}
+    .muted{color:var(--muted)}
+
+    /* About */
+    .about-grid{display:grid; grid-template-columns: 1.1fr .9fr; gap:24px}
+    .about-grid img{width:100%; border-radius:14px; border:1px solid rgba(255,255,255,.1)}
+    @media (max-width: 860px){.about-grid{grid-template-columns:1fr}}
+
+    /* Skills */
+    .skill-tags{display:flex; flex-wrap:wrap; gap:10px}
+    .tag{border:1px solid rgba(255,255,255,.1); background:rgba(255,255,255,.03); padding:10px 12px; border-radius:10px}
+
+    /* Projects */
+    .filters{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:16px}
+    .filter{padding:8px 12px; border-radius:10px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.03); cursor:pointer}
+    .filter.active{background:linear-gradient(135deg, var(--brand), var(--brand-2)); color:#09151a; border-color:transparent}
+
+    .grid{display:grid; grid-template-columns: repeat(3, 1fr); gap:18px}
+    @media (max-width: 1020px){.grid{grid-template-columns: repeat(2, 1fr)}}
+    @media (max-width: 640px){.grid{grid-template-columns: 1fr}}
+
+    .project{
+      position:relative; overflow:hidden; border-radius:14px;
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08)
+    }
+    .thumb{aspect-ratio: 16/10; width:100%; object-fit:cover; display:block; filter:saturate(.98)}
+    .pbody{padding:16px 16px 18px}
+    .plabel{font-weight:700; margin:0 0 6px}
+    .pcat{font-size:12px; letter-spacing:.3px; color:var(--muted)}
+    .project:hover{box-shadow: 0 10px 30px rgba(0,0,0,.45)}
+
+    /* Contact */
+    .contact-card{display:grid; grid-template-columns: 1fr 1fr; gap:18px}
+    @media (max-width: 860px){.contact-card{grid-template-columns: 1fr}}
+
+    /* Footer */
+    footer{padding:36px 0 60px; color:var(--muted)}
+
+    /* Reveal animations */
+    .reveal{opacity:0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease}
+    .reveal.show{opacity:1; transform:none}
+
+    /* Back to top */
+    .top{position:fixed; right:18px; bottom:18px; border:1px solid rgba(255,255,255,.08); border-radius:12px; background:rgba(18,18,23,.85); padding:10px 12px; display:none}
+    .top.show{display:inline-flex}
+
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+      .reveal{transition:none}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header / Nav -->
+  <header>
+    <div class="wrap nav">
+      <div class="brand"><span class="dot" aria-hidden="true"></span> <span>Your Name</span></div>
+      <nav id="nav">
+        <button class="hamburger" aria-label="Toggle navigation" onclick="toggleNav()">☰</button>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main class="wrap hero">
+    <h1 class="reveal">Developer, Builder, Problem‑Solver</h1>
+    <p class="lead reveal">I design and ship fast, accessible web experiences. Currently focused on performance and security.</p>
+
+    <div class="chiprow reveal" aria-label="Quick facts">
+      <div class="chip" title="Location">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.14 2 5 5.14 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+        <span>Los Angeles, CA</span>
+      </div>
+      <div class="chip" title="Availability">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v13c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 15H5V10h14v9z"/></svg>
+        <span>Open to work</span>
+      </div>
+      <div class="chip" title="Email"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5L4 8V6l8 5 8-5v2z"/></svg>
+        <a href="#contact">you@example.com</a>
+      </div>
+    </div>
+
+    <div class="cta reveal">
+      <a class="btn primary" href="#projects">See Projects</a>
+      <a class="btn" href="#contact">Contact Me</a>
+    </div>
+  </main>
+
+  <!-- About -->
+  <section id="about" class="wrap">
+    <div class="about-grid">
+      <div class="card reveal">
+        <h2 class="section-title">About Me</h2>
+        <p>Hi! I’m <strong>Your Name</strong>, a developer who loves turning ideas into fast, polished products. I’ve built landing pages, dashboards, and small apps used by thousands. My current interests include performance budgets, DX, and secure-by-default patterns.</p>
+        <p class="muted">Outside of code, I enjoy comp arch rabbit holes, photography, and coaching new devs.</p>
+        <div class="cta" style="margin-top:12px">
+          <a class="btn" href="#projects">View my work</a>
+          <a class="btn" href="mailto:you@example.com">Email me</a>
+        </div>
+      </div>
+      <div class="reveal">
+        <img src="https://images.unsplash.com/photo-1526378722484-bd91ca387e72?q=80&w=1200&auto=format&fit=crop" alt="Abstract desk setup with laptop" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="wrap">
+    <div class="card reveal">
+      <h2 class="section-title">Skills</h2>
+      <div class="skill-tags">
+        <span class="tag">HTML • CSS • JS</span>
+        <span class="tag">TypeScript</span>
+        <span class="tag">React</span>
+        <span class="tag">Node.js</span>
+        <span class="tag">REST / GraphQL</span>
+        <span class="tag">Performance</span>
+        <span class="tag">Accessibility (a11y)</span>
+        <span class="tag">Security Basics</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="wrap">
+    <div class="card reveal">
+      <div style="display:flex; align-items:end; justify-content:space-between; gap:16px; flex-wrap:wrap">
+        <h2 class="section-title" style="margin:0">Projects</h2>
+        <div class="filters" role="tablist" aria-label="Project filters">
+          <button class="filter active" data-filter="all" role="tab" aria-selected="true">All</button>
+          <button class="filter" data-filter="web" role="tab">Web</button>
+          <button class="filter" data-filter="app" role="tab">App</button>
+          <button class="filter" data-filter="tools" role="tab">Tools</button>
+        </div>
+      </div>
+
+      <div class="grid" id="projectGrid">
+        <!-- Project card -->
+        <article class="project" data-cat="web">
+          <img class="thumb" src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop" alt="Dashboard UI thumbnail" loading="lazy">
+          <div class="pbody">
+            <h3 class="plabel">Analytics Dashboard</h3>
+            <p class="pcat">Web • React • Charts</p>
+          </div>
+        </article>
+
+        <article class="project" data-cat="app">
+          <img class="thumb" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1200&auto=format&fit=crop" alt="Mobile app thumbnail" loading="lazy">
+          <div class="pbody">
+            <h3 class="plabel">TaskMate</h3>
+            <p class="pcat">App • PWA • Offline</p>
+          </div>
+        </article>
+
+        <article class="project" data-cat="tools">
+          <img class="thumb" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop" alt="CLI tools thumbnail" loading="lazy">
+          <div class="pbody">
+            <h3 class="plabel">CL Utils</h3>
+            <p class="pcat">Tools • Node.js</p>
+          </div>
+        </article>
+
+        <article class="project" data-cat="web">
+          <img class="thumb" src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop" alt="Landing page thumbnail" loading="lazy">
+          <div class="pbody">
+            <h3 class="plabel">Launch LP</h3>
+            <p class="pcat">Web • Marketing</p>
+          </div>
+        </article>
+
+        <article class="project" data-cat="tools">
+          <img class="thumb" src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=1200&auto=format&fit=crop" alt="Dev tools thumbnail" loading="lazy">
+          <div class="pbody">
+            <h3 class="plabel">Perf Inspector</h3>
+            <p class="pcat">Tools • Audits</p>
+          </div>
+        </article>
+
+        <article class="project" data-cat="app">
+          <img class="thumb" src="https://images.unsplash.com/photo-1551298370-9d3d53740c23?q=80&w=1200&auto=format&fit=crop" alt="Music app thumbnail" loading="lazy">
+          <div class="pbody">
+            <h3 class="plabel">Lo‑Fi Player</h3>
+            <p class="pcat">App • WebAudio</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="wrap">
+    <div class="card reveal contact-card">
+      <div>
+        <h2 class="section-title">Contact</h2>
+        <p class="muted">Want to collaborate or have a project in mind? Drop me a line.</p>
+        <div class="cta">
+          <a class="btn primary" href="mailto:you@example.com">Email Me</a>
+          <a class="btn" href="https://github.com/yourusername" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </div>
+      <form class="card" onsubmit="event.preventDefault(); window.location='mailto:you@example.com?subject='+encodeURIComponent(document.getElementById('subj').value)+'&body='+encodeURIComponent(document.getElementById('msg').value)">
+        <label for="subj">Subject</label>
+        <input id="subj" type="text" placeholder="Let’s build something" required style="margin:8px 0 12px; width:100%; padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.03); color:var(--text)">
+        <label for="msg">Message</label>
+        <textarea id="msg" rows="5" placeholder="Hi — I’m reaching out about…" required style="margin:8px 0 12px; width:100%; padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.03); color:var(--text)"></textarea>
+        <button class="btn" type="submit">Open Email App</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="wrap">
+    <div class="reveal">
+      <p>© <span id="year"></span> Your Name. Built with HTML/CSS/JS. Hosted free on GitHub Pages.</p>
+    </div>
+  </footer>
+
+  <a href="#" class="top" id="topBtn" aria-label="Back to top">↑</a>
+
+  <script>
+    // Mobile nav toggle
+    function toggleNav(){ document.getElementById('nav').classList.toggle('open'); }
+
+    // Intersection Observer for reveal animations
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); } });
+    },{threshold: .12});
+    document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+
+    // Project filtering
+    const filters = document.querySelectorAll('.filter');
+    const cards = document.querySelectorAll('.project');
+    filters.forEach(btn=> btn.addEventListener('click', ()=>{
+      filters.forEach(b=>{b.classList.remove('active'); b.setAttribute('aria-selected','false');});
+      btn.classList.add('active'); btn.setAttribute('aria-selected','true');
+      const f = btn.dataset.filter;
+      cards.forEach(card=>{
+        const show = (f==='all') || card.dataset.cat===f;
+        card.style.display = show ? '' : 'none';
+      });
+    }));
+
+    // Back to top visibility
+    const topBtn = document.getElementById('topBtn');
+    window.addEventListener('scroll',()=>{
+      topBtn.classList.toggle('show', window.scrollY > 600);
+    });
+
+    // Current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
