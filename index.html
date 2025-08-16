@@ -3,149 +3,159 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Axiomm | Portfolio</title>
+  <title>Axiomm</title>
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0d1117;
-      color: #e6edf3;
-      line-height: 1.6;
-    }
-    header {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #0f0f0f;
+      color: #fff;
       text-align: center;
-      padding: 3rem 1rem;
-      background: #161b22;
     }
+
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: auto;
+      padding: 40px 0;
+    }
+
     header img {
       width: 120px;
+      height: 120px;
       border-radius: 50%;
-      margin-bottom: 1rem;
+      border: 3px solid #fff;
     }
+
     header h1 {
-      margin: 0;
-      font-size: 2.5rem;
+      font-size: 2.2em;
+      margin: 15px 0 5px 0;
     }
+
     header p {
-      color: #8b949e;
-      margin: 0.3rem 0;
+      font-size: 1.1em;
+      color: #ccc;
+      margin-bottom: 20px;
     }
-    section {
-      max-width: 900px;
-      margin: 3rem auto;
-      padding: 0 1rem;
-    }
-    h2 {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 1.5rem;
-      border-bottom: 2px solid #30363d;
-      padding-bottom: 0.5rem;
-    }
+
     .about {
-      background: #161b22;
-      padding: 2rem;
-      border-radius: 12px;
+      margin: 40px 0;
+      line-height: 1.6;
+      font-size: 1.05em;
+      color: #ddd;
     }
-    .about p {
-      font-size: 1.1rem;
-      margin-bottom: 1rem;
+
+    h2 {
+      margin: 50px 0 20px;
+      font-size: 1.8em;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
-    .experiences {
+
+    .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
+      gap: 20px;
     }
-    .exp-card {
-      background: #161b22;
-      border-radius: 12px;
-      padding: 1.5rem;
-      text-align: center;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      transition: transform 0.2s ease;
+
+    .card {
+      background: #1a1a1a;
+      border-radius: 10px;
+      padding: 15px;
+      transition: transform 0.3s ease;
     }
-    .exp-card:hover {
-      transform: scale(1.05);
+
+    .card:hover {
+      transform: translateY(-5px);
     }
-    .exp-card img {
-      width: 80px;
-      height: 80px;
-      object-fit: contain;
-      margin-bottom: 1rem;
+
+    .card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
     }
-    .exp-card h3 {
-      margin: 0.5rem 0;
+
+    .card p {
+      font-size: 1em;
+      color: #bbb;
     }
-    .exp-card p {
-      color: #8b949e;
-      font-size: 0.95rem;
-    }
+
     footer {
-      text-align: center;
-      padding: 2rem;
-      color: #8b949e;
-      font-size: 0.9rem;
+      margin-top: 60px;
+      font-size: 0.9em;
+      color: #777;
+    }
+
+    footer a {
+      color: #4da6ff;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <header>
-    <img src="YOUR_LOGO.png" alt="Axiomm Logo">
-    <h1>Axiomm</h1>
-    <p>Email: <a href="mailto:axiommservices@gmail.com" style="color:#58a6ff;">axiommservices@gmail.com</a></p>
-  </header>
+  <div class="container">
+    <header>
+      <!-- Replace with your logo/avatar -->
+      <img src="your-logo.png" alt="Axiomm Logo">
+      <h1>Axiomm</h1>
+      <p>Developer & Manager</p>
+    </header>
 
-  <section class="about">
-    <h2>About Me</h2>
-    <p>Hey there! I'm Axiomm. I've been a Developer and Manager in the Minecraft community for over two years, working with some of the biggest networks out there. In that time, I've gained a lot of experience handling moderation, managing teams, and making sure servers run smoothly while keeping the community engaged and safe.</p>
-    <p>You might be wondering, "Why should you bring me on board?" Well, I’m dedicated, experienced, and always looking for ways to improve the player experience. Whether it's enforcing rules fairly, resolving conflicts, or helping a server grow, I bring professionalism and passion to everything I do.</p>
-    <p><strong>What do I bring to the team?</strong></p>
-    <p>I bring a variety of moderation and management skills to your server. On top of that, I’m always open to the community — I love chatting with players, meeting new people, and learning from others across the Minecraft space. I always put in as many hours as I can into staffing because I genuinely enjoy what I do. I’m also constantly looking for new opportunities to grow and improve. As I mentioned, I’ve been part of multiple big networks that you might recognize, and I’ll be listing them below.</p>
-  </section>
+    <section class="about">
+      <p>
+        Hey there! I'm Axiomm. I've been a Developer and Manager in the Minecraft community for over two years, working with some of the biggest networks out there. In that time, I've gained a lot of experience handling moderation, managing teams, and making sure servers run smoothly while keeping the community engaged and safe.
+      </p>
+      <p>
+        You might be wondering, "Why should you bring me on board?" Well, I’m dedicated, experienced, and always looking for ways to improve the player experience. Whether it's enforcing rules fairly, resolving conflicts, or helping a server grow, I bring professionalism and passion to everything I do.
+      </p>
+      <p>
+        What do I bring to the team? I bring a variety of moderation and management skills to your server. On top of that, I’m always open to the community — I love chatting with players, meeting new people, and learning from others across the Minecraft space.
+      </p>
+      <p>
+        I always put in as many hours as I can into staffing because I genuinely enjoy what I do. I’m also constantly looking for new opportunities to grow and improve. As I mentioned, I’ve been part of multiple big networks that you might recognize, and I’ll be listing them below.
+      </p>
+    </section>
 
-  <section>
     <h2>Experiences</h2>
-    <div class="experiences">
-      <div class="exp-card">
-        <img src="exp1.png" alt="Experience 1">
-        <h3>Sr Admin</h3>
-        <p>Past Role</p>
+    <section class="grid">
+      <!-- Replace image src with your uploaded ones -->
+      <div class="card">
+        <img src="ember.png" alt="Ember SMP">
+        <p>Sr. Admin</p>
       </div>
-      <div class="exp-card">
-        <img src="exp2.png" alt="Experience 2">
-        <h3>Moderator</h3>
-        <p>Currently</p>
+      <div class="card">
+        <img src="boxmc.png" alt="BoxMC">
+        <p>Mod (Currently)</p>
       </div>
-      <div class="exp-card">
-        <img src="exp3.png" alt="Experience 3">
-        <h3>Manager</h3>
-        <p>Past Role</p>
+      <div class="card">
+        <img src="king.png" alt="King SMP">
+        <p>Manager</p>
       </div>
-      <div class="exp-card">
-        <img src="exp4.png" alt="Experience 4">
-        <h3>Moderator</h3>
-        <p>Past Role</p>
+      <div class="card">
+        <img src="cavern.png" alt="Cavern SMP">
+        <p>Mod</p>
       </div>
-      <div class="exp-card">
-        <img src="exp5.png" alt="Experience 5">
-        <h3>Helper</h3>
-        <p>Past Role</p>
+      <div class="card">
+        <img src="crystal.png" alt="CrystalChaos">
+        <p>Helper</p>
       </div>
-      <div class="exp-card">
-        <img src="exp6.png" alt="Experience 6">
-        <h3>Sr Moderator</h3>
-        <p>Past Role</p>
+      <div class="card">
+        <img src="staff.png" alt="Other Server">
+        <p>Sr. Mod</p>
       </div>
-      <div class="exp-card">
-        <img src="exp7.png" alt="Experience 7">
-        <h3>Moderator</h3>
-        <p>Past Role</p>
+      <div class="card">
+        <img src="staff2.png" alt="Other Server">
+        <p>Mod</p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <footer>
-    <p>© 2025 Axiomm. All Rights Reserved.</p>
-  </footer>
+    <footer>
+      <p>Contact me: <a href="mailto:axiommservices@gmail.com">axiommservices@gmail.com</a></p>
+    </footer>
+  </div>
 </body>
 </html>
